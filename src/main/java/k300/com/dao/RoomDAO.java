@@ -1,5 +1,6 @@
 package k300.com.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -13,4 +14,6 @@ import k300.com.entities.Room;
 public interface RoomDAO {
 
 	public List<Room> findAll();
+	
+	public List<Room> findByDateAndType(Date $in, String type);
 }

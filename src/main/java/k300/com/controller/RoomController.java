@@ -1,5 +1,6 @@
 package k300.com.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,14 @@ import k300.com.entities.Room;
 public class RoomController {
 	
 	@Autowired
+	@Qualifier("roomDAO")
     private RoomDAO roomDAO;
 	
+	@RequestMapping("/")
 	public String index() {
-		List<Room> list = roomDAO.findAll();
+		List<Room> list = roomDAO.findByDateAndType(new Date(), "deluxe");
 	    for (Room customer : list) {
-	      System.out.println(customer.getName());
+	      System.out.println(customer);
 	    }
 	    return "index";
 	}
