@@ -1,4 +1,4 @@
-package k300.com.controller;
+package k300.com.controllers;
 
 import java.util.Date;
 import java.util.List;
@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import k300.com.dao.RoomDAO;
 import k300.com.entities.Room;
 
-@Controller
-public class RoomController {
+@RestController
+public class RoomCrudController {
 	
 	@Autowired
 	@Qualifier("roomDAO")
@@ -20,9 +21,9 @@ public class RoomController {
 	
 	@RequestMapping("/")
 	public String index() {
-		List<Room> list = roomDAO.findByDateAndType(new Date(), "deluxe");
-	    for (Room customer : list) {
-	      System.out.println(customer);
+		List<Object[]> list = roomDAO.findByDateAndType(new Date(), "deluxe");
+	    for (Object room : list) {
+	      System.out.println(room);
 	    }
 	    return "index";
 	}

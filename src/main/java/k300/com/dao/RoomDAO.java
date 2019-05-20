@@ -15,5 +15,5 @@ public interface RoomDAO {
 
 	public List<Room> findAll();
 	
-	public List<Room> findByDateAndType(Date $in, String type);
+	public List<Object[]> findByDateAndType(Date $in, String type);
 }

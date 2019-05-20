@@ -6,10 +6,9 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
   
   
-  <context:component-scan base-package="k300.com.controller" />
+  		<context:component-scan base-package="k300.com" />
   
-  <bean name="room" 
-		class="k300.com.controller.RoomController" />
+  
 		
 		<!-- View Resolver -->
 		<bean

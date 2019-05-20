@@ -26,7 +26,7 @@ public class RoomDAOImpl implements RoomDAO  {
 	}
 
 
-	public List<Room> findByDateAndType(Date $in, String type) {
+	public List<Object[]> findByDateAndType(Date $in, String type) {
 		
 		Session session = this.sessionFactory.openSession();
 		List<Object[]> resultList = session.createNativeQuery("select rooms.* from rooms \r\n" + 
@@ -36,6 +36,6 @@ public class RoomDAOImpl implements RoomDAO  {
 				"Join reservation on occupied_rooms.reservation_id = reservation.id\r\n" + 
 				"Where date_out >  \"2019-05-17 12:30:00\") and room_type.description = 'deluxe'").getResultList();
 		
-		return null;
+		return resultList;
 	}
 }
