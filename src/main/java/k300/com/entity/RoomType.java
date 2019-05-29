@@ -1,4 +1,4 @@
-package k300.com.entities;
+package k300.com.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,12 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "room_type")
 public class RoomType {
 
 	public RoomType() {
-	}	
+	}
 
 	public RoomType(String description, Integer maxCapacity) {
 		this.description = description;
@@ -22,10 +23,10 @@ public class RoomType {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "max_capacity")
 	private Integer maxCapacity;
 
@@ -52,8 +53,5 @@ public class RoomType {
 	public void setMaxCapacity(Integer maxCapacity) {
 		this.maxCapacity = maxCapacity;
 	}
-	
-	
-	
-	
+
 }

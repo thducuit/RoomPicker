@@ -1,4 +1,4 @@
-package k300.com.entities;
+package k300.com.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "rooms")
 public class Room {
@@ -19,19 +20,19 @@ public class Room {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@ManyToOne
-  	@JoinColumn(name = "room_type_id", nullable = false)
+	@JoinColumn(name = "room_type_id", nullable = false)
 	private RoomType roomType;
-	
-	 public Room(String name) {
-		 this.name = name;
-	 }
-	 
-	 public int getId() {
+
+	public Room(String name) {
+		this.name = name;
+	}
+
+	public int getId() {
 		return id;
 	}
 
@@ -59,8 +60,5 @@ public class Room {
 	public String toString() {
 		return "Room [id=" + id + ", name=" + name + ", roomType=" + roomType.getDescription() + "]";
 	}
-	
-	
-	
-	
+
 }

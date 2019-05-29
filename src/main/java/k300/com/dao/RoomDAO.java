@@ -9,11 +9,19 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import k300.com.entities.Room;
+import k300.com.entity.Room;
 
 public interface RoomDAO {
 
-	public List<Room> findAll();
+	List<Room> findAll();
 	
-	public List<Object[]> findByDateAndType(Date $in, String type);
+	Room add(Room room);
+	
+	Room update(Room room);
+	
+	void remove(Integer roomId);
+	
+	Room getById(Integer roomId);
+	
+	List<Object[]> findByDateAndType(Date $in, String type);
 }
