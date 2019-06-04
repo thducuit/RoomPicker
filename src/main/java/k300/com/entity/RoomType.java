@@ -1,11 +1,8 @@
 package k300.com.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "room_type")
@@ -25,9 +22,11 @@ public class RoomType {
 	private int id;
 
 	@Column(name = "description")
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String description;
 
 	@Column(name = "max_capacity")
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private Integer maxCapacity;
 
 	public int getId() {

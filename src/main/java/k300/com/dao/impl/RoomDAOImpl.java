@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import k300.com.dao.RoomDAO;
 import k300.com.entity.Room;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("roomDAO")
+@Transactional
 public class RoomDAOImpl implements RoomDAO  {
 
 	@Autowired
@@ -19,13 +21,12 @@ public class RoomDAOImpl implements RoomDAO  {
 	
 	
 	public List<Room> findAll() {
-	Session session = this.sessionFactory.openSession();
-	List<Room> result = (List<Room>) session.createQuery("FROM Room", Room.class).getResultList();
-	    return result;
-	}	
+		Session session = this.sessionFactory.openSession();
+		return session.createQuery("FROM Room", Room.class).getResultList();
+	}
 
 	public Room add(Room room) {
-		Session session = this.sessionFactory.getCurrentSession();
+		Session session = this.sessionFactory.openSession();
 		session.saveOrUpdate(room);
 		return room;
 		
@@ -50,7 +51,7 @@ public class RoomDAOImpl implements RoomDAO  {
 
 	public Room getById(Integer roomId) {
 		  Session session = sessionFactory.getCurrentSession();
-		  return (Room) session.get(Room.class, roomId);
+		  return session.get(Room.class, roomId);
 	}
 	
 public List<Object[]> findByDateAndType(Date $in, String type) {

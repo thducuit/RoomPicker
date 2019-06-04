@@ -1,13 +1,6 @@
 package k300.com.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "rooms")
@@ -54,11 +47,6 @@ public class Room {
 
 	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
-	}
-
-	@Override
-	public String toString() {
-		return "Room [id=" + id + ", name=" + name + ", roomType=" + roomType.getDescription() + "]";
 	}
 
 }

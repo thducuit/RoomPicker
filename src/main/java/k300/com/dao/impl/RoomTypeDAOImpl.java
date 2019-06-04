@@ -17,24 +17,24 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
 	private SessionFactory sessionFactory;
 
 	public List<RoomType> findAll() {
-		Session session = sessionFactory.getCurrentSession();
-		return (List<RoomType>) session.createQuery("From RoomType", RoomType.class).getResultList();
+		Session session = sessionFactory.openSession();
+		return session.createQuery("From RoomType", RoomType.class).getResultList();
 	}
 
 	public RoomType add(RoomType roomType) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		session.saveOrUpdate(roomType);
 		return roomType;
 	}
 
 	public RoomType update(RoomType roomType) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		session.update(roomType);
 		return roomType;
 	}
 
 	public void remove(Integer roomTypeId) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		RoomType roomType = getById(roomTypeId);
 		if (roomType != null) {
 			session.delete(roomType);
@@ -42,7 +42,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
 	}
 
 	public RoomType getById(Integer roomTypeId) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		return (RoomType) session.get(RoomType.class, roomTypeId);		
 	}
 
