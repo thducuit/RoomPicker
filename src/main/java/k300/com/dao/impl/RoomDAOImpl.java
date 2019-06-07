@@ -4,7 +4,6 @@ import k300.com.dao.RoomDAO;
 import k300.com.entity.Room;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,37 +17,33 @@ public class RoomDAOImpl implements RoomDAO {
 	private SessionFactory sessionFactory;
 
 	public List<Room> findAll() {
-		Session session = this.sessionFactory.openSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		return session.createQuery("FROM Room", Room.class).getResultList();
 	}
 
 	public Room add(Room room) {
-		Session session = this.sessionFactory.openSession();
-		session.saveOrUpdate(room);
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(room);
 		return room;
 
 	}
 
 	public Room update(Room room) {
-		Session session = this.sessionFactory.openSession();
+		Session session = this.sessionFactory.getCurrentSession();
 		session.update(room);
 		return room;
 	}
 
 	public void remove(Integer roomId) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		//		Room room = getById(roomId);
-//		Room room = session.get(Room.class, roomId);
-//		if (room != null) {
+		Session session = sessionFactory.getCurrentSession();
+		Room room = session.byId(Room.class).load(roomId);
+		if (room != null) {
 			session.delete(session.get(Room.class, roomId));
-//			session.flush();
-//		}
+		}
 	}
 
 	public Room getById(Integer roomId) {
-		Session session = sessionFactory.openSession();
-		return session.get(Room.class, roomId);
+		return sessionFactory.getCurrentSession().get(Room.class, roomId);
 	}
 
 	public List<Object[]> findByDateAndType(Date $in, String type) {

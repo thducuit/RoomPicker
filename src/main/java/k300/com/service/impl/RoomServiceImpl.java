@@ -11,6 +11,7 @@ import java.util.List;
 
 
 @Service
+@Transactional
 public class RoomServiceImpl implements RoomService {
 	
 	@Autowired
@@ -19,11 +20,11 @@ public class RoomServiceImpl implements RoomService {
 	public List<Room> findAll() {
 		return roomDAO.findAll();
 	}
-
+	@Transactional
 	public Room getById(Integer id) {
 		return roomDAO.getById(id);
 	}
-
+	@Transactional
 	public Room add(Room room) {
 		return roomDAO.add(room);
 	}
@@ -33,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
 		roomDAO.remove(id);
 		
 	}
-
+	@Transactional
 	public Room update(Room room) {
 		return roomDAO.update(room);
 	}
