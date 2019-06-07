@@ -17,6 +17,15 @@ public class Room {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "number")
+	private Integer number;
+
+	@Column(name = "status")
+	private Integer status;
+
+	@Column(name = "smoke")
+	private Boolean smoke;
+
 	@ManyToOne
 	@JoinColumn(name = "room_type_id", nullable = false)
 	private RoomType roomType;
@@ -49,4 +58,28 @@ public class Room {
 		this.roomType = roomType;
 	}
 
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	@Column(name = "smoke")
+	public Boolean getSmoke() {
+		return smoke;
+	}
+
+	public void setSmoke(Boolean smoke) {
+		this.smoke = smoke;
+	}
 }

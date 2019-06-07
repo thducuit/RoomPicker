@@ -35,7 +35,7 @@ public class RoomTypeController {
 	}
 
 	@PostMapping(value = "/create")
-	public ResponseResult createNewRoom(@RequestBody RoomTypeDto roomTypeDto) {
+	public ResponseResult createNewRoomType(@RequestBody RoomTypeDto roomTypeDto) {
 		RoomType roomTypeCreated;
 		try{
 			roomTypeCreated = new RoomType();

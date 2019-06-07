@@ -26,6 +26,16 @@ public final class ResponseResultHandler {
 		return result;
 	}
 
+	public static ResponseResult handleSuccess(HttpStatus httpStatus, String message) {
+
+		ResponseResult result = new ResponseResult();
+		result.setCode(httpStatus.value());
+		result.setMessage(message);
+		result.setMessageCode(httpStatus.getReasonPhrase());
+
+		return result;
+	}
+
 	public static ResponseResult handleError(HttpStatus httpStatus, Exception ex, Object data) {
 
 		ResponseResult result = new ResponseResult();

@@ -43,7 +43,7 @@ public class RoomTypeDAOImpl implements RoomTypeDAO {
 
 	public RoomType getById(Integer roomTypeId) {
 		Session session = sessionFactory.openSession();
-		return (RoomType) session.get(RoomType.class, roomTypeId);		
+		return session.get(RoomType.class, roomTypeId);
 	}
 
 }
